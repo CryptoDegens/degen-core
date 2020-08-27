@@ -33,7 +33,7 @@ contract DegenToken is DSMath {
     uint256                                           public  totalSupply;
     mapping (address => uint256)                      public  balanceOf;
     mapping (address => mapping (address => uint256)) public  allowance;
-    bytes32                                           public  symbol = "DEGEN";
+    bytes32                                           public  symbol = "$DEGEN";
     uint256                                           public  decimals = 18;
     bytes32                                           public  name = "Degen Money";
     address                                           public  reserve;

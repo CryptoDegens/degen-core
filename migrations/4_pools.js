@@ -74,7 +74,7 @@ async function deployPools(deployer, network) {
 
   // create staking pool
   const stakingPool = await deployer.deploy(StakingPool, degenToken.address);
-  await setupPool(degenToken, stakingPool, '10000000000000000000000000'); // 10,000,000
+  await setupPool(degenToken, stakingPool, '12000000000000000000000000'); // 12,000,000
 }
 
 async function setupPool(degenToken, pool, seedAmount) {

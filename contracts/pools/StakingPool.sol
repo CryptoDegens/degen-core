@@ -633,6 +633,7 @@ contract StakingPool is LPTokenWrapper, IRewardDistributionRecipient {
     uint256 public rewardPerTokenStored;
     mapping(address => uint256) public userRewardPerTokenPaid;
     mapping(address => uint256) public rewards;
+    uint256 public totalStaked = 0;
 
     event RewardAdded(uint256 reward);
     event Staked(address indexed user, uint256 amount);
@@ -690,12 +691,14 @@ contract StakingPool is LPTokenWrapper, IRewardDistributionRecipient {
     function stake(uint256 amount) public updateReward(msg.sender) checkStart {
         require(amount > 0, "Cannot stake 0");
         super.stake(amount);
+        totalStaked = totalStaked.add(amount);
         emit Staked(msg.sender, amount);
     }
 
     function withdraw(uint256 amount) public updateReward(msg.sender) checkStart {
         require(amount > 0, "Cannot withdraw 0");
         super.withdraw(amount);
+        totalStaked = totalStaked.sub(amount);
         emit Withdrawn(msg.sender, amount);
     }
 
